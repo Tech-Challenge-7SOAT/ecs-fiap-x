@@ -13,7 +13,7 @@ resource "aws_ecs_task_definition" "ecs_task" {
   container_definitions = jsonencode([
     {
       name        = "ecs-container"
-      image       = "448628038787.dkr.ecr.us-east-1.amazonaws.com/fiapx-api/order"
+      image       = "448628038787.dkr.ecr.us-east-1.amazonaws.com/fiapx-api/order:latest"
       portMappings = [
         {
           containerPort = 8080
