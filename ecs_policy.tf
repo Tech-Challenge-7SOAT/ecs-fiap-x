@@ -11,7 +11,7 @@ resource "aws_iam_role_policy" "ecs_s3_access" {
           "s3:PutObject",
           "s3:PutObjectAcl"
         ]
-        Resource = "${aws_s3_bucket.bucket_fiap_x.arn}/*"
+        Resource = "arn:aws:s3:::fiap-x-storage/*"
       }
     ]
   })
