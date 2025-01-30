@@ -1,6 +1,6 @@
 resource "aws_iam_role_policy" "ecs_s3_access" {
   name = "ecs-s3-access"
-  role = var.labRole
+  role = "LabRole"
 
   policy = jsonencode({
     Version   = "2012-10-17"
