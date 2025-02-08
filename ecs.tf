@@ -21,6 +21,15 @@ resource "aws_ecs_task_definition" "ecs_task" {
         }
       ]
       essential   = true
+
+      logConfiguration = {
+        logDriver = "awslogs"
+        options = {
+          awslogs-group         = "/ecs/fiapx-api"
+          awslogs-region        = "us-east-1"
+          awslogs-stream-prefix = "ecs"
+        }
+      }
     }
   ])
 }
