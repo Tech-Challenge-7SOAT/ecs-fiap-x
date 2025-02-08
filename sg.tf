@@ -1,6 +1,6 @@
 resource "aws_security_group" "ecs_sg" {
   name        = "SG-${var.projectName}"
-  description = "SG used for fiap-x project"
+  description = "Security Group for ECS tasks"
   vpc_id      = data.aws_vpc.default.id
 
   # Permite tráfego APENAS do ALB na porta 8080
@@ -12,9 +12,9 @@ resource "aws_security_group" "ecs_sg" {
   }
 
   egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
+    from_port   = 5432
+    to_port     = 5432
+    protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
