@@ -3,6 +3,7 @@ resource "aws_security_group" "ecs_sg" {
   description = "SG used for fiap-x project"
   vpc_id      = data.aws_vpc.default.id
 
+  # Permite tráfego APENAS do ALB na porta 8080
   ingress {
     from_port   = 8080
     to_port     = 8080
