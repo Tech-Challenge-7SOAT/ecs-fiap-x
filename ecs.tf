@@ -46,4 +46,10 @@ resource "aws_ecs_service" "ecs_service" {
     security_groups = [aws_security_group.ecs_sg.id]
     assign_public_ip = true
   }
+
+  load_balancer {
+    target_group_arn = data.aws_lb_target_group.ecs_tg.arn
+    container_name   = "ecs-container"
+    container_port   = 8080
+  }
 }
