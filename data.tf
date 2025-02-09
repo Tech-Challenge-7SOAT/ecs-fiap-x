@@ -12,3 +12,10 @@ data "aws_subnets" "default" {
 data "aws_lb_target_group" "ecs_tg" {
   name = "ecs-target-group"
 }
+
+data "aws_security_group" "default_sg" {
+  filter {
+    name   = "group-name"
+    values = ["default"]
+  }
+}
