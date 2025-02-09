@@ -181,4 +181,3 @@ Sinta-se à vontade para abrir **issues** ou enviar **pull requests** para melho
 
 ## 📜 **Licença**
 Este projeto está sob a licença MIT.
-
