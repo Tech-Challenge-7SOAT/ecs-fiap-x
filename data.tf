@@ -8,3 +8,14 @@ data "aws_subnets" "default" {
     values = [data.aws_vpc.default.id]
   }
 }
+
+data "aws_lb_target_group" "ecs_tg" {
+  name = "ecs-target-group"
+}
+
+data "aws_security_group" "default_sg" {
+  filter {
+    name   = "group-name"
+    values = ["default"]
+  }
+}

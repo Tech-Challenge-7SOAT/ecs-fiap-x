@@ -5,6 +5,7 @@ resource "aws_ecs_cluster" "ecs_cluster" {
 resource "aws_ecs_task_definition" "ecs_task" {
   family                   = "ecs-task"
   execution_role_arn       = var.labRole
+  task_role_arn            = var.labRole
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
   cpu                      = "256"
@@ -45,5 +46,11 @@ resource "aws_ecs_service" "ecs_service" {
     subnets         = data.aws_subnets.default.ids
     security_groups = [aws_security_group.ecs_sg.id]
     assign_public_ip = true
+  }
+
+  load_balancer {
+    target_group_arn = data.aws_lb_target_group.ecs_tg.arn
+    container_name   = "ecs-container"
+    container_port   = 8080
   }
 }
